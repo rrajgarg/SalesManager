@@ -41,7 +41,7 @@ public class CommodityDetails extends AppCompatActivity {
                         if(dataSnapshot.hasChild(name))
                         {
                             int Quantity = dataSnapshot.child(name).getValue(CommodityClass.class).getQuantity()+Integer.parseInt(Squantity);
-                            int Profit = dataSnapshot.child(name).getValue(CommodityClass.class).getProfit()+Integer.parseInt(Sprofit);
+                            int Profit = dataSnapshot.child(name).getValue(CommodityClass.class).getProfit();
                             CommodityClass cc = new CommodityClass(name,Quantity,Profit);
                             databaseReference.child("root").child("commodities").child(name).setValue(cc).addOnSuccessListener(
                                     new OnSuccessListener<Void>() {
