@@ -26,23 +26,34 @@ public class MainSalesperson extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_salesperson);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         MyCommodities = new ArrayList<>();
         AllCommodities = new ArrayList<>();
+        myProfile = (Button) findViewById(R.id.profile);
         recyclerView = (RecyclerView) findViewById(R.id.salesman_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Bundle bundle = getIntent().getExtras();
         final String MyEmail = bundle.getString("myemail");
         myNotifications = (Button) findViewById(R.id.notifications);
+        // Notifications has been checked
         myNotifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainSalesperson.this,Notifications.class);
                 intent.putExtra("type","salesman");
+                startActivity(intent);
+            }
+        });
+        // Salesman's own profile has been viewed
+        myProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainSalesperson.this,MyProfile.class);
+                intent.putExtra("email",MyEmail);
                 startActivity(intent);
             }
         });
