@@ -35,6 +35,8 @@ public class MainSalesperson extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.salesman_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Bundle bundle = getIntent().getExtras();
+        final String MyEmail = bundle.getString("myemail");
         myNotifications = (Button) findViewById(R.id.notifications);
         myNotifications.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +63,7 @@ public class MainSalesperson extends AppCompatActivity {
                             }
                         }
                         //   Toast.makeText(getApplicationContext(),Integer.toString(MyNotifications.size()),Toast.LENGTH_LONG).show();
-                        CommodityAdapter commodityAdapter= new CommodityAdapter(MyCommodities,getApplicationContext());
+                        CommodityAdapter commodityAdapter= new CommodityAdapter(MyCommodities,getApplicationContext(),"salesperson",MyEmail);
                         recyclerView.setAdapter(commodityAdapter);
                     }
                     @Override

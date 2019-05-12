@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
                                                 {
                                                     // if admin logs in
                                                     Intent intent = new Intent(Login.this,MainAdmin.class);
+                                                    intent.putExtra("myemail",pp.getEmail().toString());
                                                     startActivity(intent);
                                                     finish();
                                                 }
@@ -98,6 +99,7 @@ public class Login extends AppCompatActivity {
                                                 {
                                                     // if salesman logs in
                                                     Intent intent = new Intent(Login.this,MainSalesperson.class);
+                                                    intent.putExtra("myemail",pp.getEmail().toString());
                                                     startActivity(intent);
                                                     finish();
                                                 }

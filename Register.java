@@ -114,6 +114,7 @@ public class Register extends AppCompatActivity {
                                                 // Signed in Successfully
                                                 Toast.makeText(Register.this,"Signed in successfully",Toast.LENGTH_LONG).show();
                                                 Intent intent = new Intent(Register.this,MainSalesperson.class);
+                                                intent.putExtra("myemail",email);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -190,6 +191,7 @@ public class Register extends AppCompatActivity {
                                                 // Signed in Successfully
                                                 Toast.makeText(Register.this,"Signed in successfully",Toast.LENGTH_LONG).show();
                                                 Intent intent = new Intent(Register.this,MainAdmin.class);
+                                                intent.putExtra("myemail",email);
                                                 startActivity(intent);
                                                 finish();
                                             }

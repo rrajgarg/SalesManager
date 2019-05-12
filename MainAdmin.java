@@ -34,6 +34,8 @@ public class MainAdmin extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         MyCommodities = new ArrayList<>();
         AllCommodities = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        final String MyEmail = bundle.getString("myemail");
         recyclerView = (RecyclerView) findViewById(R.id.admin_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -65,7 +67,7 @@ public class MainAdmin extends AppCompatActivity {
                             }
                         }
                         //   Toast.makeText(getApplicationContext(),Integer.toString(MyNotifications.size()),Toast.LENGTH_LONG).show();
-                        CommodityAdapter commodityAdapter= new CommodityAdapter(MyCommodities,getApplicationContext());
+                        CommodityAdapter commodityAdapter= new CommodityAdapter(MyCommodities,getApplicationContext(),"admin",MyEmail);
                         recyclerView.setAdapter(commodityAdapter);
                     }
                     @Override
