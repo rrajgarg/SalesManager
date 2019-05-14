@@ -42,6 +42,7 @@ public class Notifications extends AppCompatActivity {
         MyNotifications = new ArrayList<>();
         Bundle bundle = getIntent().getExtras();
         String types = bundle.getString("type");
+        String is = bundle.getString("is");
         // Because Salesman is not allowed to send notifications
         databaseReference.child("root").child("notifications").addValueEventListener(
                 new ValueEventListener() {

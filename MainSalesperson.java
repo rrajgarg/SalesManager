@@ -33,6 +33,7 @@ public class MainSalesperson extends AppCompatActivity {
         MyCommodities = new ArrayList<>();
         AllCommodities = new ArrayList<>();
         myProfile = (Button) findViewById(R.id.profile);
+        myGroup = (Button) findViewById(R.id.groupchat);
         recyclerView = (RecyclerView) findViewById(R.id.salesman_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,9 +46,11 @@ public class MainSalesperson extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainSalesperson.this,Notifications.class);
                 intent.putExtra("type","salesman");
+                intent.putExtra("is","notification");
                 startActivity(intent);
             }
         });
+
         // Salesman's own profile has been viewed
         myProfile.setOnClickListener(new View.OnClickListener() {
             @Override

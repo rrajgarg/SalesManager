@@ -17,6 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,17 +82,32 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
                                         {
                                             CommodityClass commodityClass2 = dataSnapshot.child("SoldCommodities").child(commodityName).getValue(CommodityClass.class);
                                             commodityClass2.setQuantity(commodityClass2.getQuantity()+1);
+                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                                            String currentDateandTime = sdf.format(new Date());
+                                            List<String> list=commodityClass2.getTime();
+                                            list.add(currentDateandTime);
+                                            commodityClass2.setTime(list);
                                             databaseReference1.child("root").child("profile").child(username).child("SoldCommodities").child(commodityName).setValue(commodityClass2);
                                         }
                                         else
                                         {
                                             commodityClass1.setQuantity(1);
+                                            List<String> list = new ArrayList<>();
+                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                                            String currentDateandTime = sdf.format(new Date());
+                                            list.add(currentDateandTime);
+                                            commodityClass1.setTime(list);
                                             databaseReference1.child("root").child("profile").child(username).child("SoldCommodities").child(commodityName).setValue(commodityClass1);
                                         }
                                     }
                                     else
                                     {
                                         commodityClass1.setQuantity(1);
+                                        List<String> list = new ArrayList<>();
+                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                                        String currentDateandTime = sdf.format(new Date());
+                                        list.add(currentDateandTime);
+                                        commodityClass1.setTime(list);
                                         databaseReference1.child("root").child("profile").child(username).child("SoldCommodities").child(commodityName).setValue(commodityClass1);
                                     }
                                 }

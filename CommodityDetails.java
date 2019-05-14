@@ -28,7 +28,6 @@ public class CommodityDetails extends AppCompatActivity {
         commodityQuantity = (EditText) findViewById(R.id.quantity);
         button = (Button) findViewById(R.id.add);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("root").child("commodities").child("hello").setValue(new CommodityClass("hello",1,0));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +41,7 @@ public class CommodityDetails extends AppCompatActivity {
                         {
                             int Quantity = dataSnapshot.child(name).getValue(CommodityClass.class).getQuantity()+Integer.parseInt(Squantity);
                             int Profit = dataSnapshot.child(name).getValue(CommodityClass.class).getProfit();
-                            CommodityClass cc = new CommodityClass(name,Quantity,Profit);
+                            CommodityClass cc = new CommodityClass(name,Quantity,Profit,null);
                             databaseReference.child("root").child("commodities").child(name).setValue(cc).addOnSuccessListener(
                                     new OnSuccessListener<Void>() {
                                         @Override

@@ -1,5 +1,7 @@
 package com.example.android.salesmanager;
 
+import java.util.List;
+
 /**
  * Created by raj garg on 11-05-2019.
  */
@@ -8,6 +10,22 @@ public class CommodityClass {
     String CommodityName;
     int quantity;
     int profit;
+    List<String> time;
+
+    public CommodityClass(String commodityName, int quantity, int profit, List<String> time) {
+        CommodityName = commodityName;
+        this.quantity = quantity;
+        this.profit = profit;
+        this.time = time;
+    }
+
+    public List<String> getTime() {
+        return time;
+    }
+
+    public void setTime(List<String> time) {
+        this.time = time;
+    }
 
     public CommodityClass() {
     }
